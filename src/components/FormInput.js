@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 const FormUserInput = () => {
-    const formHandler = (event) => {
+    async function formHandler(event) {
         event.preventDefault();
         const title = event.target.title.value;
         const openingText = event.target.openingtext.value;
@@ -9,8 +9,15 @@ const FormUserInput = () => {
         const NewMovieObj = {
             title: title, openingText: openingText, date: date,
         }
-        console.log(NewMovieObj)
-
+        const response = await fetch('https://react-app-cd331-default-rtdb.firebaseio.com/movies.json', {
+            method: 'POST',
+            body: JSON.stringify(NewMovieObj),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json()
+        console.log(data)
     }
     return (
         <>
