@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
-
+import FormUserInput from './components/FormInput';
 import MoviesList from './components/MoviesList';
 import './App.css';
 
 function App() {
-
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -55,6 +54,7 @@ function App() {
   }
   return (
     <React.Fragment>
+      <section> <FormUserInput /></section>
       <section>
         <button onClick={FetchMovies}>Fetch Movies</button>
       </section>
