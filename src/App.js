@@ -13,7 +13,7 @@ function App() {
     setIsLoading(true)
     setError(null)
     try {
-      const response = await fetch('https://swapi.dev/api/film/');
+      const response = await fetch('https://swapi.dev/api/films/');
       if (!response.ok) {
         throw new Error("some thing went wrong....Retrying")
       }
@@ -43,6 +43,10 @@ function App() {
     )
     return () => clearInterval(intid)
   }, [error])
+
+  useEffect(() => {
+    FetchMovies();
+  }, [FetchMovies])
 
   function cancelButtonHandler() {
     setError(null)
